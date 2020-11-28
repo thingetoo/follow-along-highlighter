@@ -26,25 +26,25 @@
     </div>
 
   <script>
-    const triggers = document.querySelectorAll('a');
-    const highlight = document.createElement('span');
-    highlight.classList.add('highlight');
-    document.body.append(highlight);
+    const triggers = document.querySelectorAll('a'); // selecting all link(a) elements
+    const highlight = document.createElement('span'); // creating a span 
+    highlight.classList.add('highlight'); // adding out css class to the span
+    document.body.append(highlight); // adding span to the body of our page
 
     function highlightLink() {
-      const linkCoords = this.getBoundingClientRect();
+      const linkCoords = this.getBoundingClientRect(); // returns us a document location and width of the link selection
       const coords = {
-        width: linkCoords.width,
+        width: linkCoords.width, 
         height: linkCoords.height,
-        top: linkCoords.top + window.scrollY,
-        left: linkCoords.left + window.scrollX
+        top: linkCoords.top + window.scrollY, //accounting for the vertical scroll with respect to location
+        left: linkCoords.left + window.scrollX // accounting for any horizontal scroll
       };
-      highlight.style.width = `${coords.width}px`;
+      highlight.style.width = `${coords.width}px`; // adjusting the specific style of the highlight
       highlight.style.height = `${coords.height}px`;
-      highlight.style.transform  = `translate(${coords.left}px, ${coords.top}px)`
+      highlight.style.transform  = `translate(${coords.left}px, ${coords.top}px)` //positioning our CSS style in the correct location
     };
 
-    triggers.forEach((a => a.addEventListener('mouseenter', highlightLink)))
+    triggers.forEach((a => a.addEventListener('mouseenter', highlightLink))) // calling out highlight link function when the mouse hovers over each a element
   </script>
 </body>
 </html>
